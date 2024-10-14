@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function capturarResultado() {
+            let numero1 = 5;
+            let numero2 = 3;
+            let operacion = numero1 + " + " + numero2;
+            let resultadoUsuario = prompt("¿Cuál es el resultado de " + operacion + "?");
+            verificarResultado(numero1, numero2, resultadoUsuario);
+        }
+        function verificarResultado(num1, num2, resultado) {
+            let resultadoCorrecto = num1 + num2;
+            if (resultado == resultadoCorrecto) {
+                alert("¡Correcto! El resultado es " + resultadoCorrecto);
+            } else {
+                alert("Incorrecto. El resultado correcto es " + resultadoCorrecto);
+            }
+        }
+        capturarResultado();
+    </script>
+</body>
+</html>

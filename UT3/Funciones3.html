@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <li><a href="../index.html">Volver</a></li>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diferencias entre Bucles</title>
+</head>
+<body>
+    <script>
+        
+        let array = [10, 20, 30, 40];
+        let objeto = {a: 1, b: 2, c: 3};
+
+//////////////////////////////////////////// Bucle for ////////////////////////////////////////////
+
+        document.write("<h3>Bucle for</h3>");
+        document.write("Recorriendo un array usando for:<br>");
+        for (let i = 0; i < array.length; i++) {
+            document.write(array[i] + "<br>");
+        }
+
+        /*Se usa para iterar sobre arrays, listas o cualquier iterable donde tengas control del índice.
+        * Pros: Permite un control completo sobre el índice, puedes modificar el valor de `i`.
+        * Contras: Más código que otros loops, por lo que puede ser más propenso a errores.*/
+
+//////////////////////////////////////////// Bucle forEach ////////////////////////////////////////////
+
+        document.write("<h3>Bucle forEach</h3>");
+        document.write("Recorriendo un array usando forEach:<br>");
+        array.forEach(function(valor, indice) {
+            document.write("Índice: " + indice + " - Valor: " + valor + "<br>");
+        });
+       
+        /*Recorre cada elemento y ejecuta una función de callback.
+        * Pros: Sintaxis más limpia y concisa.
+        * Contras: No puedes usar `break` o `continue` para interrumpir la iteración.*/
+
+//////////////////////////////////////////// Bucle for in ////////////////////////////////////////////
+
+        document.write("<h3>Bucle for...in</h3>");
+        document.write("Recorriendo un objeto usando for...in:<br>");
+        for (let key in objeto) {
+            document.write(key + ": " + objeto[key] + "<br>");
+        }
+        
+        /*Se usa para recorrer las claves de un objeto.
+        *Pros: Ideal para objetos, ya que te permite recorrer las claves de forma directa.
+        *Contras: No es adecuado para arrays, ya que recorre las claves (índices) y no los valores directamente.*/
+
+//////////////////////////////////////////// Bucle for of ////////////////////////////////////////////
+
+        document.write("<h3>Bucle for...of</h3>");
+        document.write("Recorriendo un array usando for...of:<br>");
+        for (let valor of array) {
+            document.write(valor + "<br>");
+        }
+
+        /*A diferencia de for...in, este loop recorre los valores y no las claves.
+        * Pros: Es adecuado para cualquier estructura iterable (arrays, strings, mapas, sets, etc.).
+        * Contras: No se puede usar en objetos que no sean iterables directamente (por ejemplo, objetos literales).*/
+
+    </script>
+</body>
+<footer>
+    <p>Creado por Antonio - DEW © 2024</p>
+</footer>
+</html>
