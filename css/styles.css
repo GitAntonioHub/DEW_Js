@@ -1,39 +1,100 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+
+
+.volver {
+    text-align: left; /* Alinea el texto a la izquierda */
+    margin-left: 0; /* Sin margen izquierdo adicional */
+    padding-left: 0; /* Sin padding adicional a la izquierda */
 }
 
+.volver a {
+    text-decoration: none;
+    color: #4CAF50;
+    font-weight: bold;
+}
+
+.volver a:hover {
+    color: #388E3C;
+}
+
+/* Estilos generales */
 body {
     font-family: 'Arial', sans-serif;
-    background-color: #f4f4f9;
+    margin: 0;
+    padding: 0;
+    background-color: #f7e9e3; /* Color pastel suave */
     color: #333;
-    line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
 
+/* Header con menú desplegable */
 header {
-    background-color: #4CAF50;
-    color: white;
+    background-color: #d6e8d4; /* Color pastel suave para el header */
+    color: #333;
     padding: 20px;
     text-align: center;
+    position: relative; /* Para posicionar el menú */
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 h1 {
+    margin: 0;
     font-size: 2.5em;
 }
 
+.menu {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+}
+
+.menu ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    background-color: #f7e9e3;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    display: none; /* Escondido por defecto */
+    position: absolute;
+    top: 30px;
+    left: 0;
+}
+
+.menu ul li {
+    padding: 10px 20px;
+}
+
+.menu ul li a {
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+}
+
+.menu ul li a:hover {
+    color: #4CAF50;
+}
+
+.menu:hover ul {
+    display: block; /* Mostrar menú al pasar el ratón */
+}
+
+/* Estilo para la sección de tareas */
 .task-list {
-    margin: 20px auto;
-    padding: 20px;
     max-width: 800px;
-    background-color: #fff;
+    margin: 30px auto;
+    background-color: white;
+    padding: 20px;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 h2 {
-    margin-bottom: 10px;
+    font-size: 2em;
+    margin: 20px 0 10px;
+    color: #4CAF50;
 }
 
 ul {
@@ -42,26 +103,33 @@ ul {
 }
 
 li {
-    margin-bottom: 10px;
+    margin: 10px 0;
 }
 
 a {
     text-decoration: none;
     color: #4CAF50;
     font-weight: bold;
-    font-size: 1.2em;
+    transition: color 0.3s ease;
 }
 
 a:hover {
-    color: #333;
+    color: #388E3C;
 }
 
+/* Footer centrado y fijo */
 footer {
+    background-color: #d4d6e8; /* Color pastel suave */
+    color: #333;
     text-align: center;
-    padding: 10px;
-    background-color: #4CAF50;
-    color: white;
+    padding: 20px;
     position: fixed;
-    bottom: 0;
     width: 100%;
+    bottom: 0;
+    box-shadow: 0 -2px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Para asegurar que el contenido ocupe el espacio disponible */
+main {
+    flex: 1;
 }
