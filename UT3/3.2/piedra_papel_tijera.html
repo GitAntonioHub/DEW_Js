@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Piedra, Papel o Tijera</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div class="container">
+        <a class="btn-volver" href="index.html">Volver al Menú</a>
+        <h1>Piedra, Papel o Tijera</h1>
+        
+        <h2 id="texto-eleccion">Elige tu opción:</h2>
+        <div class="opciones-container">
+            <div>
+                <input type="radio" id="piedra" name="opcion" value="0">
+                <label for="piedra">Piedra</label>
+                <img src="images/piedra.jpg" alt="Piedra" class="opcion-img"><br>
+            </div>
+
+            <div>
+                <input type="radio" id="papel" name="opcion" value="1">
+                <label for="papel">Papel</label>
+                <img src="images/papel.jpg" alt="Papel" class="opcion-img"><br>
+            </div>
+
+            <div>
+                <input type="radio" id="tijera" name="opcion" value="2">
+                <label for="tijera">Tijera</label>
+                <img src="images/tijera.jpg" alt="Tijera" class="opcion-img"><br>
+            </div>
+        </div>
+        
+        <button class="btn" id="jugar">Jugar</button>
+        
+        <div id="resultados" style="display:none;">
+            <h2 id="resultado"></h2>
+            <div class="resultados-container">
+                <div>
+                    <h3>Tú elegiste:</h3>
+                    <img id="mi-eleccion" alt="Tu elección" />
+                </div>
+                <div>
+                    <h3>La máquina elige...</h3>
+                    <img id="maquina" alt="Opción de la máquina" />
+                </div>
+            </div>
+            <button class="btn" id="reiniciar">Reiniciar</button>
+        </div>
+    </div>
+
+    <script src="js/piedra_papel_tijera.js"></script>
+</body>
+<footer>
+    <p>Creado por Antonio - DEW © 2024</p>
+</footer>
+</html>

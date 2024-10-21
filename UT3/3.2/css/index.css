@@ -1,0 +1,90 @@
+.volver {
+    text-align: left; /* Alinea el texto a la izquierda */
+    margin-left: 0; /* Sin margen izquierdo adicional */
+    padding-left: 0; /* Sin padding adicional a la izquierda */
+}
+
+.volver a {
+    text-decoration: none;
+    color: #4CAF50;
+    font-weight: bold;
+}
+
+.volver a:hover {
+    color: #388E3C;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+header {
+    background-color: #d6e8d4; 
+    color: #333;
+    padding: 20px;
+    text-align: center;
+    position: relative; 
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    color: #5a5a5a;
+    font-size: 2em;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.container {
+    text-align: center;
+    margin:auto;
+    padding: 20px;
+    background-color: #d6e8d4;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+ul {
+    list-style-type: none; 
+    padding: 0; 
+    margin: 0; 
+}
+
+.icon {
+    width: 100px; 
+    height: auto; 
+    display: block; 
+    margin: 0 auto 10px; 
+}
+
+.btn {
+    display: inline-block;
+    margin: 10px;
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #c8e6c9; 
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.btn:hover {
+    background-color: #aed581;
+}
+
+footer {
+    background-color: #d4d6e8; /* Color pastel suave */
+    color: #333;
+    text-align: center;
+    padding: 20px;
+    position: flex;
+    width: 100%;
+    bottom: 0;
+    box-shadow: 0 -2px 6px rgba(0, 0, 0, 0.1);
+}

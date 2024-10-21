@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/styles.css">
+    <title>Manejo de Funciones</title>
+
+</head>
+<body>
+    <div class="container">
+        <h1 id="titulo">Manejo de Funciones</h1>
+        <a class="btn-volver" href="index.html">Volver al Menú</a>
+        
+        <div id="menu">
+            <button onclick="mostrarMenu('factorial')">Calcular Factorial</button>
+            <button onclick="mostrarMenu('suma')">Suma de Números</button>
+            <button onclick="mostrarMenu('informacion')">Información</button>
+            <button onclick="mostrarMenu('factorialRecursivo')">Factorial Recursivo</button>
+        </div>
+        
+        <div id="resultado"></div>
+
+        <div id="factorial-menu" class="funcion-menu" style="display:none;">
+            <h2>Calcular Factorial</h2>
+            <h3>Introduce un número no negativo</h3>
+            <input type="number" id="numeroFactorial" placeholder="Introduce un número no negativo">
+            <button onclick="calcularFactorial()">Calcular Factorial</button>
+            <button onclick="volver()">Volver</button>
+        </div>
+
+        <div id="suma-menu" class="funcion-menu" style="display:none;">
+            <h2>Suma de Números</h2>
+            <h3>Introduce números separados por comas</h3>
+            <input type="text" id="numerosSuma" placeholder="Introduce números separados por comas">
+            <button onclick="calcularSuma()">Calcular Suma</button>
+            <button onclick="volver()">Volver</button>
+        </div>
+
+        <div id="informacion-menu" class="funcion-menu" style="display:none;">
+            <h2>Información</h2>
+            <input type="text" id="nombre" placeholder="Introduce tu nombre">
+            <input type="text" id="localidad" placeholder="Introduce tu localidad">
+            <input type="number" id="valor" placeholder="Introduce un valor">
+            <button onclick="informacion()">Enviar Información</button>
+            <button onclick="volver()">Volver</button>
+        </div>
+
+        <div id="factorialRecursivo-menu" class="funcion-menu" style="display:none;">
+            <h2>Calcular Factorial Recursivo</h2>
+            <h3>Introduce un número no negativo</h3>
+            <input type="number" id="numeroFactorialRecursivo" placeholder="Introduce un número no negativo">
+            <button onclick="calcularFactorialRecursivo()">Calcular Factorial Recursivo</button>
+            <button onclick="volver()">Volver</button>
+        </div>
+    </div>
+    <script src="js/funciones.js"></script>
+</body>
+<footer>
+    <p>Creado por Antonio - DEW © 2024</p>
+</footer>
+</html>
+
