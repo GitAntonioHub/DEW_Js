@@ -110,6 +110,12 @@ h3 {
     z-index: 100; 
 }
 
+.btn-volver a {
+    text-decoration: none;
+    color: #4CAF50;
+    font-weight: bold;
+}
+
 .btn-volver:hover {
     background-color: #ffab91; 
 }
