@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Trabajar con Vectores</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+    <a href="index.html" class="boton-volver">Volver</a>
+    <h1>Trabajar con Vectores</h1>
+    <textarea id="entradaVector" placeholder="Introduce elementos separados por comas"></textarea>
+    <br>
+    <button onclick="mostrarVector()">VER VECTOR</button>
+    <button onclick="ordenarVector()">ORDENAR VECTOR</button>
+    <button onclick="revertirVector()">VECTOR AL REVÉS</button>
+    <div id="mostrarVector"></div>
+
+    <script>
+        let vector = [];
+
+        function parsearEntradaVector() {
+            const entrada = document.getElementById("entradaVector").value;
+            vector = entrada.split(',').map(item => item.trim());
+        }
+
+        function mostrarVector() {
+            parsearEntradaVector();
+            document.getElementById("mostrarVector").innerText = `Original: ${vector.join(', ')}`;
+        }
+
+        function ordenarVector() {
+            parsearEntradaVector();
+            vector.sort((a, b) => a.localeCompare(b, undefined, { sensitivity: 'base' }));
+            document.getElementById("mostrarVector").innerText = `Ordenado: ${vector.join(', ')}`;
+        }
+
+        function revertirVector() {
+            parsearEntradaVector();
+            vector.reverse();
+            document.getElementById("mostrarVector").innerText = `Al Revés: ${vector.join(', ')}`;
+        }
+    </script>
+</body>
+</html>

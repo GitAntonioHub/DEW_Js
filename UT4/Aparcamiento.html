@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Parking El Rincón</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+    <a href="index.html" class="boton-volver">Volver</a>
+    <h1>Parking El Rincón</h1>
+    <label>Entrada (dd/mm/aaaa hh:mm): </label>
+    <input type="text" id="entrada" placeholder="dd/mm/aaaa hh:mm">
+    <br>
+    <label>Salida (dd/mm/aaaa hh:mm): </label>
+    <input type="text" id="salida" placeholder="dd/mm/aaaa hh:mm">
+    <br>
+    <button onclick="calcularPrecio()">PRECIO</button>
+    <button onclick="reiniciarAparcamiento()">REINICIAR</button>
+    <p>Precio: <span id="precio">0 €</span></p>
+
+    <script>
+        function parsearFechaHora(input) {
+            const partes = input.split(/[:/ ]/);
+            return new Date(partes[2], partes[1] - 1, partes[0], partes[3], partes[4]);
+        }
+
+        function calcularPrecio() {
+            const entrada = parsearFechaHora(document.getElementById("entrada").value);
+            const salida = parsearFechaHora(document.getElementById("salida").value);
+            const diferenciaMs = salida - entrada;
+            const diferenciaHoras = Math.ceil(diferenciaMs / 3600000);
+            const maxDiario = 20;
+            const precio = Math.min(maxDiario, 1.2 + Math.max(0, diferenciaHoras - 1) * 1.5);
+            document.getElementById("precio").innerText = `${precio} €`;
+        }
+
+        function reiniciarAparcamiento() {
+            document.getElementById("entrada").value = "";
+            document.getElementById("salida").value = "";
+            document.getElementById("precio").innerText = "0 €";
+        }
+    </script>
+</body>
+</html>

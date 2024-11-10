@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Juego del Ahorcado</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+    <a href="index.html" class="boton-volver">Volver</a>
+    <h1>Ahorcado</h1>
+    <div>
+        <label>Introduce una palabra:</label>
+        <input type="password" id="palabra" onblur="mostrarPista()">
+        <br>
+        <label>Intenta adivinarla:</label>
+        <input type="text" id="letra" maxlength="1" oninput="comprobarLetra(this.value)">
+        <button onclick="reiniciarJuego()">REINICIAR</button>
+        <p id="mostrarPalabra"></p>
+        <p id="resultado"></p>
+        <img id="imagenAhorcado" src="ahorcado1.png" alt="Imagen del Ahorcado">
+    </div>
+
+    <script>
+        let palabraOriginal = "";
+        let palabraOculta = "";
+        let intentos = 0;
+
+        function mostrarPista() {
+            palabraOriginal = document.getElementById("palabra").value.toUpperCase();
+            palabraOculta = palabraOriginal.replace(/[^ ]/g, "_");
+            document.getElementById("mostrarPalabra").innerText = palabraOculta;
+            mostrarLetraAleatoria();
+        }
+
+        function mostrarLetraAleatoria() {
+            const letras = Array.from(palabraOriginal).filter((char, index) => palabraOculta[index] === "_");
+            const letraAleatoria = letras[Math.floor(Math.random() * letras.length)];
+            palabraOculta = palabraOculta.split("").map((char, index) =>
+                palabraOriginal[index] === letraAleatoria ? letraAleatoria : char
+            ).join("");
+            document.getElementById("mostrarPalabra").innerText = palabraOculta;
+        }
+
+        function comprobarLetra(letra) {
+            letra = letra.toUpperCase();
+            if (palabraOriginal.includes(letra)) {
+                palabraOculta = palabraOculta.split("").map((char, index) =>
+                    palabraOriginal[index] === letra ? letra : char
+                ).join("");
+                document.getElementById("mostrarPalabra").innerText = palabraOculta;
+                if (palabraOculta === palabraOriginal) {
+                    document.getElementById("resultado").innerText = "¡Ganaste!";
+                }
+            } else {
+                intentos++;
+                document.getElementById("imagenAhorcado").src = `ahorcado${intentos}.png`;
+                if (intentos >= 6) {
+                    document.getElementById("resultado").innerText = "Perdiste";
+                }
+            }
+            document.getElementById("letra").value = "";
+        }
+
+        function reiniciarJuego() {
+            intentos = 0;
+            document.getElementById("palabra").value = "";
+            document.getElementById("letra").value = "";
+            document.getElementById("mostrarPalabra").innerText = "";
+            document.getElementById("resultado").innerText = "";
+            document.getElementById("imagenAhorcado").src = "ahorcado1.png";
+        }
+    </script>
+</body>
+</html>
