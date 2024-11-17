@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Juego del Ahorcado</title>
-    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
     <a href="index.html" class="boton-volver">Volver</a>
@@ -17,7 +17,7 @@
         <button onclick="reiniciarJuego()">REINICIAR</button>
         <p id="mostrarPalabra"></p>
         <p id="resultado"></p>
-        <img id="imagenAhorcado" src="ahorcado1.png" alt="Imagen del Ahorcado">
+        <img id="imagenAhorcado" src="img/Ahorcado1.png" alt="Imagen del Ahorcado">
     </div>
 
     <script>
@@ -53,8 +53,8 @@
                 }
             } else {
                 intentos++;
-                document.getElementById("imagenAhorcado").src = `ahorcado${intentos}.png`;
-                if (intentos >= 6) {
+                document.getElementById("imagenAhorcado").src = `img/Ahorcado${intentos}.png`;
+                if (intentos >= 7) {
                     document.getElementById("resultado").innerText = "Perdiste";
                 }
             }
@@ -67,7 +67,7 @@
             document.getElementById("letra").value = "";
             document.getElementById("mostrarPalabra").innerText = "";
             document.getElementById("resultado").innerText = "";
-            document.getElementById("imagenAhorcado").src = "ahorcado1.png";
+            document.getElementById("imagenAhorcado").src = "Ahorcado1.png";
         }
     </script>
 </body>

@@ -5,8 +5,49 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tareas de JavaScript - DEW</title>
     <link rel="stylesheet" href="css/index.css">
+    
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            let typedText = ""; 
+
+            document.addEventListener("keydown", (event) => {
+                const key = event.key; 
+                typedText += key; 
+
+                if (typedText.includes("Antonio")) {
+                    const img = document.createElement("img");
+                    img.src = "imgs/hacker-hamster.gif";
+                    img.alt = "Hacker Hamster";
+                    img.style.width = "500px";
+                    img.style.height = "500px";
+                    img.style.position = "fixed";
+                    img.style.bottom = "500px";
+                    img.style.right = "500px";
+                    img.style.zIndex = "1000";
+
+                    document.body.appendChild(img);
+
+                    const audio = new Audio("audio/blade.mp3");
+                    audio.play();
+
+                    typedText = "";
+
+                    setTimeout(() => {
+                        img.remove();
+                        audio.pause();
+                        audio.currentTime = 0; 
+                    }, 4000);
+                }
+                if (typedText.length > 20) {
+                    typedText = typedText.slice(-20);
+                }
+            });
+        });
+    </script>
+
 </head>
 <body>
+    
     
     <header>
         <h1>Mis Tareas de JavaScript - DEW</h1>
@@ -40,6 +81,11 @@
             <li><a href="UT3/Funciones2.3.html">Funciones 2.3</a></li>
             <li><a href="UT3/Funciones3.html">Funciones 3</a></li>
             <li><a href="UT3/3.2/index.html">Minijuegos</a></li>
+        </ul>
+
+        <h2>UT4</h2>
+        <ul>
+            <li><a href="UT4/index.html">Ahorcado</a></li>
         </ul>
     </section>
     <footer>
