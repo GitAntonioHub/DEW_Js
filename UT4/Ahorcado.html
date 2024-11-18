@@ -53,8 +53,8 @@
                 }
             } else {
                 intentos++;
-                document.getElementById("imagenAhorcado").src = `img/Ahorcado${intentos}.png`;
-                if (intentos >= 7) {
+                document.getElementById("imagenAhorcado").src = `img/Ahorcado${intentos+1}.png`;
+                if (intentos >= 6) {
                     document.getElementById("resultado").innerText = "Perdiste";
                 }
             }
