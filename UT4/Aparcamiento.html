@@ -2,38 +2,68 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Parking El Rincón</title>
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
     <a href="index.html" class="boton-volver">Volver</a>
     <header><h1>Aparcamiento</h1></header>
-    <label>Entrada (dd/mm/aaaa hh:mm): </label>
-    <input type="text" id="entrada" placeholder="dd/mm/aaaa hh:mm">
-    <br>
-    <label>Salida (dd/mm/aaaa hh:mm): </label>
-    <input type="text" id="salida" placeholder="dd/mm/aaaa hh:mm">
-    <br>
-    <button onclick="calcularPrecio()">PRECIO</button>
-    <button onclick="reiniciarAparcamiento()">REINICIAR</button>
-    <p>Precio: <span id="precio">0 €</span></p>
+    <main>
+        <label for="entrada">Entrada</label>
+        <input type="datetime-local" id="entrada">
+        <br>
+        <label for="salida">Salida</label>
+        <input type="datetime-local" id="salida">
+        <br>
+        <button onclick="calcularPrecio()">PRECIO</button>
+        <button onclick="reiniciarAparcamiento()">REINICIAR</button>
+        <p>Precio: <span id="precio">0 €</span></p>
+    </main>
 
     <script>
-        function parsearFechaHora(input) {
-            const partes = input.split(/[:/ ]/);
-            return new Date(partes[2], partes[1] - 1, partes[0], partes[3], partes[4]);
-        }
-
         function calcularPrecio() {
-            const entrada = parsearFechaHora(document.getElementById("entrada").value);
-            const salida = parsearFechaHora(document.getElementById("salida").value);
-            const diferenciaMs = salida - entrada;
-            const diferenciaHoras = Math.ceil(diferenciaMs / 3600000);
-            const maxDiario = 20;
-            const precio = Math.min(maxDiario, 1.2 + Math.max(0, diferenciaHoras - 1) * 1.5);
-            document.getElementById("precio").innerText = `${precio} €`;
+            const entrada = document.getElementById("entrada").value;
+            const salida = document.getElementById("salida").value;
+    
+            if (!entrada || !salida) {
+                alert("Por favor, introduce ambas fechas (entrada y salida).");
+                return;
+            }
+    
+            const fechaEntrada = new Date(entrada);
+            const fechaSalida = new Date(salida);
+    
+            if (isNaN(fechaEntrada.getTime()) || isNaN(fechaSalida.getTime())) {
+                alert("Por favor, introduce fechas y horas válidas.");
+                return;
+            }
+            if (fechaEntrada >= fechaSalida) {
+                alert("La fecha de entrada debe ser anterior a la fecha de salida.");
+                return;
+            }
+    
+            const diferenciaMs = fechaSalida - fechaEntrada;
+            const diferenciaHoras = Math.ceil(diferenciaMs / (1000 * 60 * 60));
+    
+            const horasTotales = diferenciaHoras;
+            const diasCompletos = Math.floor(horasTotales / 24);
+            const horasRestantes = horasTotales % 24;
+    
+            let precio = 0;
+    
+            precio += diasCompletos * 20;
+    
+            if (horasRestantes > 0) {
+                if (horasRestantes <= 1) {
+                    precio += 1.2; 
+                } else {
+                    const horasAdicionales = horasRestantes - 1;
+                    precio += 1.2 + horasAdicionales * 1.5; 
+                }
+            }
+            document.getElementById("precio").innerText = `${precio.toFixed(2)} €`;
         }
-
         function reiniciarAparcamiento() {
             document.getElementById("entrada").value = "";
             document.getElementById("salida").value = "";
