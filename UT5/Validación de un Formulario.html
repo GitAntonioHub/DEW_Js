@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Validación de Formulario</title>
+  <link rel="stylesheet" href="css/styles.css">
+
+</head>
+<body>
+  <h1>Validación de Formulario</h1>
+  <form id="formulario">
+    <label for="nombre">Nombre:</label>
+    <input type="text" id="nombre" required>
+    <span class="error" id="error-nombre"></span>
+
+    <label for="apellidos">Apellidos:</label>
+    <input type="text" id="apellidos" required>
+    <span class="error" id="error-apellidos"></span>
+
+    <label for="expediente">Expediente:</label>
+    <input type="text" id="expediente" required>
+    <span class="error" id="error-expediente"></span>
+
+    <label for="edad">Edad:</label>
+    <input type="number" id="edad" required>
+    <span class="error" id="error-edad"></span>
+
+    <label for="fechaPermiso">Fecha de Permiso:</label>
+    <input type="date" id="fechaPermiso" required>
+    <span class="error" id="error-fechaPermiso"></span>
+
+    <label for="matricula">Matrícula:</label>
+    <input type="text" id="matricula" required>
+    <span class="error" id="error-matricula"></span>
+
+    <label for="importe">Importe:</label>
+    <input type="text" id="importe" required>
+    <span class="error" id="error-importe"></span>
+
+    <label for="mesExpiracion">Mes de Expiración:</label>
+    <input type="number" id="mesExpiracion" required>
+    <span class="error" id="error-mesExpiracion"></span>
+
+    <label for="añoExpiracion">Año de Expiración:</label>
+    <input type="number" id="añoExpiracion" required>
+    <span class="error" id="error-añoExpiracion"></span>
+
+    <label for="tarjeta">Tipo de Tarjeta:</label>
+    <select id="tarjeta" required>
+      <option value="genérica">Genérica</option>
+      <option value="amex">American Express</option>
+      <option value="diners">Diner's Club</option>
+      <option value="mastercard">MasterCard</option>
+      <option value="visa">Visa</option>
+    </select>
+    <span class="error" id="error-tarjeta"></span>
+
+    <button type="button" id="validaFormulario">Valida Formulario</button>
+  </form>
+
+  <script>
+    document.getElementById("validaFormulario").addEventListener("click", () => {
+      document.querySelectorAll(".error").forEach(span => span.textContent = "");
+
+      let errores = 0;
+
+      const nombre = document.getElementById("nombre").value.trim();
+      const apellidos = document.getElementById("apellidos").value.trim();
+      const expediente = document.getElementById("expediente").value.trim();
+      const edad = document.getElementById("edad").value.trim();
+      const fechaPermiso = document.getElementById("fechaPermiso").value;
+      const matricula = document.getElementById("matricula").value.trim();
+      const importe = document.getElementById("importe").value.trim();
+      const mesExpiracion = document.getElementById("mesExpiracion").value.trim();
+      const añoExpiracion = document.getElementById("añoExpiracion").value.trim();
+      const tarjeta = document.getElementById("tarjeta").value;
+
+      if (!/^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$/.test(nombre)) {
+        document.getElementById("error-nombre").textContent = "El nombre solo puede contener caracteres alfabéticos.";
+        errores++;
+      }
+      if (!/^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$/.test(apellidos)) {
+        document.getElementById("error-apellidos").textContent = "Los apellidos solo pueden contener caracteres alfabéticos.";
+        errores++;
+      }
+
+      if (!/^\d{12}$/.test(expediente) || expediente < 340000000000 || expediente > 349999999999) {
+        document.getElementById("error-expediente").textContent = "El expediente debe estar en el rango 340000000000 a 349999999999.";
+        errores++;
+      }
+
+      if (!/^\d+$/.test(edad) || edad < 18 || edad > 120) {
+        document.getElementById("error-edad").textContent = "La edad debe ser un número entre 18 y 120.";
+        errores++;
+      }
+
+      if (!fechaPermiso) {
+        document.getElementById("error-fechaPermiso").textContent = "Ingrese una fecha válida.";
+        errores++;
+      }
+
+      if (!/^\d{4}[BCDFGHJKLMNPQRSTVWXYZ]{2}\s[BCDFGHJKLMNPORSTVWXYZ]$/.test(matricula)) {
+        document.getElementById("error-matricula").textContent = "La matrícula no cumple el formato requerido.";
+        errores++;
+      }
+
+      if (!/^\d+(\.\d+)?$/.test(importe)) {
+        document.getElementById("error-importe").textContent = "El importe debe ser un número entero o decimal positivo.";
+        errores++;
+      }
+
+      if (!/^\d+$/.test(mesExpiracion) || mesExpiracion < 1 || mesExpiracion > 12) {
+        document.getElementById("error-mesExpiracion").textContent = "El mes debe estar entre 1 y 12.";
+        errores++;
+      }
+
+      if (!/^\d+$/.test(añoExpiracion) || añoExpiracion < 2001 || añoExpiracion > 2100) {
+        document.getElementById("error-añoExpiracion").textContent = "El año debe estar entre 2001 y 2100.";
+        errores++;
+      }
+
+      if (!["genérica", "amex", "diners", "mastercard", "visa"].includes(tarjeta)) {
+        document.getElementById("error-tarjeta").textContent = "Seleccione un tipo de tarjeta válido.";
+        errores++;
+      }
+
+      if (errores === 0) {
+        alert("Formulario validado correctamente.");
+      }
+    });
+  </script>
+</body>
+</html>

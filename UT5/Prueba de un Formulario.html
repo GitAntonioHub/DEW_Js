@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Prueba de Formulario</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+  const form = document.getElementById("formulario");
+  const lista = document.getElementById("lista-datos");
+  
+  const nombreInput = document.getElementById("nombre");
+  const apellidosInput = document.getElementById("apellidos");
+  const correoInput = document.getElementById("correo");
+  const origenInput = document.getElementById("origen");
+  
+  const añadirBtn = document.getElementById("añadir");
+  const visualizarBtn = document.getElementById("visualizar");
+  const eliminarBtn = document.getElementById("eliminar");
+
+  const validarCorreo = (correo) => /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(correo);
+
+  añadirBtn.addEventListener("click", () => {
+    const nombre = nombreInput.value.trim();
+    const apellidos = apellidosInput.value.trim();
+    const correo = correoInput.value.trim();
+    const origen = origenInput.value;
+
+    if (!nombre || !apellidos || !correo) {
+      alert("Por favor, complete todos los campos.");
+      return;
+    }
+
+    if (!validarCorreo(correo)) {
+      alert("Por favor, introduzca una dirección de correo válida.");
+      return;
+    }
+
+    const li = document.createElement("li");
+    li.textContent = `${apellidos}, ${nombre} (${correo}) - Llegó a través de: ${origen}`;
+    li.dataset.nombre = nombre;
+    li.dataset.apellidos = apellidos;
+    li.dataset.correo = correo;
+    li.dataset.origen = origen;
+
+    lista.appendChild(li);
+
+    nombreInput.value = "";
+    apellidosInput.value = "";
+    correoInput.value = "";
+    origenInput.selectedIndex = 0;
+  });
+
+  visualizarBtn.addEventListener("click", () => {
+    const elementos = Array.from(lista.children);
+    if (elementos.length === 0) {
+      alert("No hay datos para mostrar.");
+      return;
+    }
+    const datos = elementos.map(el => el.textContent).join("\n");
+    alert(datos);
+  });
+
+  eliminarBtn.addEventListener("click", () => {
+    const seleccionados = lista.querySelectorAll("li.selected");
+    if (seleccionados.length === 0) {
+      alert("Seleccione un elemento de la lista para eliminar.");
+      return;
+    }
+    seleccionados.forEach(el => el.remove());
+  });
+
+  lista.addEventListener("click", (e) => {
+    if (e.target.tagName === "LI") {
+      e.target.classList.toggle("selected");
+    }
+  });
+});
+
+    </script>
+
+  <h1>Prueba de Formulario</h1>
+  <form id="formulario">
+    <label for="nombre">Nombre:</label>
+    <input type="text" id="nombre" required>
+    
+    <label for="apellidos">Apellidos:</label>
+    <input type="text" id="apellidos" required>
+    
+    <label for="correo">Correo electrónico:</label>
+    <input type="email" id="correo" required>
+    
+    <label for="origen">¿Cómo llegó aquí?</label>
+    <select id="origen">
+      <option value="aleatorio">Al azar</option>
+      <option value="url">Le indicaron la URL de la página</option>
+      <option value="buscador" selected>A través de un buscador</option>
+      <option value="enlace">Mediante un enlace desde otra página</option>
+    </select>
+    
+    <button type="button" id="añadir">Añadir</button>
+    <button type="button" id="visualizar">Visualizar Datos</button>
+    <button type="button" id="eliminar">Eliminar Selección</button>
+  </form>
+  
+  <ul id="lista-datos">
+  </ul>
+</body>
+</html>

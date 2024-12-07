@@ -130,7 +130,11 @@ a:hover {
     color: #b22222;
     margin-top: 10px;
 }
-
+.error {
+      color: red;
+      font-size: 0.9em;
+      margin-top: 5px;
+    }
 #mostrarVector {
     font-size: 16px;
     margin-top: 10px;
