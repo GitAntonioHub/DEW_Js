@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Burbujeo de Sucesos</title>
+    <link rel="stylesheet" href="css/styles.css">
+
+</head>
+<body>
+    <div id="contenedor">
+        <button class="boton" data-texto="Bucábamos comida y bebida, pues nos moríamos de hambre.">P1</button>
+        <p class="texto">Bucábamos comida y bebida, pues nos moríamos de hambre.</p>
+        <button class="boton" data-texto="Pero, en definitiva, ¿Qué asunto os trajo al bosque?-preguntó el rey enojado.">P2</button>
+        <p class="texto">Pero, en definitiva, ¿Qué asunto os trajo al bosque?-preguntó el rey enojado.</p>
+        <button class="boton" data-texto="Thorin cerró entonces la boca y no dijo nada más.">P3</button>
+        <p class="texto">Thorin cerró entonces la boca y no dijo nada más.</p>
+        <button class="boton" data-texto="El hobbit (J.R.R Tolkien)">P4</button>
+        <p class="texto">El hobbit (J.R.R Tolkien)</p>
+    </div>
+    <textarea id="resultado" readonly></textarea>
+
+    <script>
+        const contenedor = document.getElementById("contenedor");
+        const textarea = document.getElementById("resultado");
+
+        contenedor.addEventListener("mouseover", (event) => {
+            if (event.target.classList.contains("boton")) {
+                if (event.target.style.backgroundColor !== "red") {
+                    event.target.style.backgroundColor = "orchid";
+                }
+            }
+        });
+
+        contenedor.addEventListener("click", (event) => {
+            if (event.target.classList.contains("boton")) {
+                if (event.target.style.backgroundColor !== "red") {
+                    event.target.style.backgroundColor = "skyblue";
+                }
+            }
+        });
+
+        contenedor.addEventListener("dblclick", (event) => {
+            if (event.target.classList.contains("boton")) {
+                if (event.target.style.backgroundColor !== "red") {
+                    event.target.style.backgroundColor = "red";
+                    // Cambiar el color de fondo del texto correspondiente
+                    const texto = event.target.nextElementSibling;
+                    texto.style.backgroundColor = "coral";
+
+                    // Copiar el texto al textarea
+                    textarea.value = texto.textContent.trim();
+                }
+            }
+        });
+    </script>
+</body>
+</html>

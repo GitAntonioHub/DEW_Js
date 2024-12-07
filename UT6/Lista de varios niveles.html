@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Listas de Varios Niveles</title>
+    <link rel="stylesheet" href="css/styles.css">
+
+</head>
+<body>
+    <h1>Servicios del Videoclub</h1>
+
+    <label for="servicio">Servicios del Videoclub:</label>
+    <select id="servicio" onchange="actualizarSegundaLista()">
+        <option value="">Seleccionar</option>
+        <option value="Video">Vídeo</option>
+        <option value="Disco">Discos</option>
+        <option value="Juego">Juegos</option>
+    </select>
+
+    <br>
+
+    <label for="genero">Género:</label>
+    <select id="genero" onchange="mostrarTexto()" disabled>
+        <option value="">Seleccionar</option>
+    </select>
+
+    <br>
+
+    <textarea id="resultado" readonly></textarea>
+
+    <script>
+        const opciones = {
+            Video: ["Humor", "Drama", "Ficción", "Otros"],
+            Disco: ["Pop", "Rock", "Latino", "Otros"],
+            Juego: ["Simulador", "Rol", "Medieval", "Otros"]
+        };
+
+        function actualizarSegundaLista() {
+            const servicio = document.getElementById("servicio").value;
+            const genero = document.getElementById("genero");
+
+            genero.innerHTML = '<option value="">Seleccionar</option>';
+
+            if (servicio && opciones[servicio]) {
+                genero.disabled = false;
+                opciones[servicio].forEach(opcion => {
+                    const nuevaOpcion = document.createElement("option");
+                    nuevaOpcion.value = opcion;
+                    nuevaOpcion.textContent = opcion;
+                    genero.appendChild(nuevaOpcion);
+                });
+            } else {
+                genero.disabled = true;
+            }
+
+            document.getElementById("resultado").value = "";
+        }
+
+        function mostrarTexto() {
+            const servicio = document.getElementById("servicio").value;
+            const genero = document.getElementById("genero").value;
+            const resultado = document.getElementById("resultado");
+
+            if (servicio && genero) {
+                resultado.value = `Texto de ${servicio} -> ${genero}`;
+            } else {
+                resultado.value = "";
+            }
+        }
+    </script>
+</body>
+</html>

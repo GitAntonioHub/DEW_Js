@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Botón Casi Inaccesible</title>
+    <link rel="stylesheet" href="css/styles.css">
+    
+</head>
+<body>
+    <div id="container">
+        <button id="boton" onclick="mostrarAlerta()">PULSA</button>
+    </div>
+
+    <script>
+        const boton = document.getElementById("boton");
+        const container = document.getElementById("container");
+
+        let movimientosRestantes = 5; 
+        boton.addEventListener("mouseover", () => {
+            if (movimientosRestantes > 0) {
+                moverBoton();
+                movimientosRestantes--;
+            } else {
+                boton.removeEventListener("mouseover", moverBoton); 
+            }
+        });
+
+        function moverBoton() {
+            const containerWidth = container.offsetWidth;
+            const containerHeight = container.offsetHeight;
+            const botonWidth = boton.offsetWidth;
+            const botonHeight = boton.offsetHeight;
+
+            const nuevaPosX = Math.random() * (containerWidth - botonWidth);
+            const nuevaPosY = Math.random() * (containerHeight - botonHeight);
+
+            boton.style.left = `${nuevaPosX}px`;
+            boton.style.top = `${nuevaPosY}px`;
+        }
+
+        function mostrarAlerta() {
+            alert("¡Me pillaste!");
+        }
+    </script>
+</body>
+</html>
