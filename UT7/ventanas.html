@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ventanas Pop-Up</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <a href="index.html" class="boton-volver">Volver</a>
+    <h1>Esta es la ventana principal</h1>
+
+    <button onclick="abrirVentanaUnica()">ABRIR VENTANA SIN CARACTERÍSTICAS UNA SOLA VEZ</button>
+    <button onclick="abrirVentanaMultiple()">ABRIR VENTANA SIN CARACTERÍSTICAS VARIAS VECES</button>
+    <button onclick="abrirVentanaConCaracteristicas()">ABRIR OTRA VENTANA CON CARACTERÍSTICAS</button>
+    <button onclick="abrirVentanaConMasCaracteristicas()">ABRIR VENTANA CON MÁS CARACTERÍSTICAS</button>
+    <button onclick="abrirPantallaCompleta()">ABRIR VENTANA A PANTALLA COMPLETA</button>
+    <button onclick="cerrarVentanas()">CERRAR VENTANAS</button>
+
+    <script>
+        let ventanas = [];
+
+        function abrirVentanaUnica() {
+            if (!ventanas[0] || ventanas[0].closed) {
+                ventanas[0] = window.open("opener.htm", "VentanaUnica");
+            } else {
+                alert("La ventana ya está abierta.");
+            }
+        }
+
+        function abrirVentanaMultiple() {
+            let nuevaVentana = window.open("opener.htm", "_blank");
+            ventanas.push(nuevaVentana);
+        }
+
+        function abrirVentanaConCaracteristicas() {
+            let nuevaVentana = window.open(
+                "opener.htm", 
+                "_blank", 
+                "width=420,height=430,menubar=no,status=yes,resizable=yes"
+            );
+            ventanas.push(nuevaVentana);
+        }
+
+        function abrirVentanaConMasCaracteristicas() {
+            let nuevaVentana = window.open(
+                "opener.htm", 
+                "_blank", 
+                "width=600,height=300,left=150,menubar=no,status=no,scrollbars=no,directories=no,location=no,titlebar=no,toolbar=no"
+            );
+            ventanas.push(nuevaVentana);
+        }
+
+        function abrirPantallaCompleta() {
+            let nuevaVentana = window.open(
+                "opener.htm", 
+                "_blank", 
+                "fullscreen=yes"
+            );
+            ventanas.push(nuevaVentana);
+        }
+
+        function cerrarVentanas() {
+            ventanas.forEach((ventana) => {
+                if (ventana && !ventana.closed) {
+                    ventana.close();
+                }
+            });
+            ventanas = [];
+        }
+    </script>
+</body>
+</html>

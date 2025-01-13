@@ -1,0 +1,106 @@
+/* Variables de color para un fácil mantenimiento */
+.boton-volver {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background-color: #4CAF50;
+  color: white;
+  padding: 8px 12px;
+  border-radius: 4px;
+  text-decoration: none;
+  font-weight: bold;
+}
+:root {
+    --color-fondo: #f0f2f5;
+    --color-principal: #3498db;
+    --color-secundario: #2ecc71;
+    --color-texto: #333;
+    --color-blanco: #fff;
+  }
+  
+  /* Reinicio básico de márgenes y rellenos */
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  /* Estilo del cuerpo de la página */
+  body {
+    background: var(--color-fondo);
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    color: var(--color-texto);
+    line-height: 1.5;
+    padding: 2rem;
+  }
+  
+  /* Títulos */
+  h2 {
+    margin-bottom: 1rem;
+    color: var(--color-principal);
+    text-align: center;
+    font-weight: normal;
+    letter-spacing: 1px;
+  }
+  
+  /* Tablas */
+  table {
+    width: 80%;
+    margin: 1rem auto;
+    border-collapse: collapse;
+    background-color: var(--color-blanco);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  }
+  
+  /* Encabezados de tabla */
+  th {
+    background-color: var(--color-principal);
+    color: var(--color-blanco);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: normal;
+  }
+  
+  /* Celdas de la tabla */
+  td,
+  th {
+    padding: 1rem;
+    border: 1px solid #ccc;
+    text-align: left;
+  }
+  
+  /* Filas pares con fondo distinto */
+  tr:nth-child(even) {
+    background-color: #ecf0f1;
+  }
+  
+  /* Ajuste para el contenido devuelto por toString() (por ejemplo <br>) */
+  td b {
+    color: var(--color-secundario);
+    font-weight: 500;
+  }
+  
+  /* Pequeña animación hover en filas */
+  tr:hover {
+    background-color: #dfe6e9;
+    transition: background-color 0.3s ease;
+  }
+  
+  /* Párrafos */
+  p {
+    width: 80%;
+    margin: 1rem auto;
+    text-align: center;
+    font-size: 1rem;
+  }
+  
+  /* Ajuste de enlaces si los hubiere */
+  a {
+    color: var(--color-principal);
+    text-decoration: none;
+  }
+  
+  a:hover {
+    text-decoration: underline;
+  }
+  

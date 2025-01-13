@@ -5,9 +5,60 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tareas de JavaScript - DEW</title>
     <link rel="stylesheet" href="css/index.css">
-    
+    <style>
+        /* Estilo para menús desplegables */
+        .dropdown {
+            margin-bottom: 20px;
+        }
+
+        .dropdown h2 {
+            cursor: pointer;
+            background-color: #d6e8d4; /* Color pastel */
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s ease;
+        }
+
+        .dropdown h2:hover {
+            background-color: #b9d6b7;
+        }
+
+        .dropdown ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: none; /* Oculto por defecto */
+            background-color: #f7e9e3;
+            border-radius: 5px;
+            padding: 10px;
+        }
+
+        .dropdown ul li {
+            margin: 10px 0;
+        }
+
+        .dropdown ul li a {
+            text-decoration: none;
+            color: #4CAF50;
+            font-weight: bold;
+        }
+
+        .dropdown ul li a:hover {
+            color: #388E3C;
+        }
+    </style>
     <script>
         document.addEventListener("DOMContentLoaded", () => {
+            const dropdowns = document.querySelectorAll(".dropdown h2");
+
+            dropdowns.forEach(dropdown => {
+                dropdown.addEventListener("click", () => {
+                    const ul = dropdown.nextElementSibling;
+                    ul.style.display = ul.style.display === "block" ? "none" : "block";
+                });
+            });
+
             let typedText = ""; 
 
             document.addEventListener("keydown", (event) => {
@@ -44,67 +95,80 @@
             });
         });
     </script>
-
 </head>
 <body>
-    
-    
     <header>
         <h1>Mis Tareas de JavaScript - DEW</h1>
+        <h4>No oses escribir mi nombre en esta pantalla</h4>
     </header>
     <section class="task-list">
-        <h2>UT2</h2>
-        <ul>
-            <li><a href="UT2/1.html">Tarea 1</a></li>
-            <li><a href="UT2/2.html">Tarea 2</a></li>
-            <li><a href="UT2/3.html">Tarea 3</a></li>
-            <li><a href="UT2/4.html">Tarea 4</a></li>
-            <li><a href="UT2/5.html">Tarea 5</a></li>
-            <li><a href="UT2/6.html">Tarea 6</a></li>
-            <li><a href="UT2/7.html">Tarea 7</a></li>
-            <li><a href="UT2/8.html">Tarea 8</a></li>
-            <li><a href="UT2/9.html">Tarea 9</a></li>
-            <li><a href="UT2/10.html">Tarea 10</a></li>
-            <li><a href="UT2/11.html">Tarea 11</a></li>
-            <li><a href="UT2/Adivinar.html">Adivinar número</a></li>
-            <li><a href="UT2/loteriaprimitiva.html">Lotería Primitiva</a></li>
-            <li><a href="UT2/Saludo.html">Saludo</a></li>
-            <li><a href="UT2/try_catch_throw.html">Try Catch Throw</a></li>
-            <li><a href="UT2/try_catch.html">Try Catch</a></li>
-        </ul>
+        <div class="dropdown">
+            <h2>UT2</h2>
+            <ul>
+                <li><a href="UT2/1.html">Tarea 1</a></li>
+                <li><a href="UT2/2.html">Tarea 2</a></li>
+                <li><a href="UT2/3.html">Tarea 3</a></li>
+                <li><a href="UT2/4.html">Tarea 4</a></li>
+                <li><a href="UT2/5.html">Tarea 5</a></li>
+                <li><a href="UT2/6.html">Tarea 6</a></li>
+                <li><a href="UT2/7.html">Tarea 7</a></li>
+                <li><a href="UT2/8.html">Tarea 8</a></li>
+                <li><a href="UT2/9.html">Tarea 9</a></li>
+                <li><a href="UT2/10.html">Tarea 10</a></li>
+                <li><a href="UT2/11.html">Tarea 11</a></li>
+                <li><a href="UT2/Adivinar.html">Adivinar número</a></li>
+                <li><a href="UT2/loteriaprimitiva.html">Lotería Primitiva</a></li>
+                <li><a href="UT2/Saludo.html">Saludo</a></li>
+                <li><a href="UT2/try_catch_throw.html">Try Catch Throw</a></li>
+                <li><a href="UT2/try_catch.html">Try Catch</a></li>
+            </ul>
+        </div>
 
-        <h2>UT3</h2>
-        <ul>
-            <li><a href="UT3/Funciones1.html">Funciones 1</a></li>
-            <li><a href="UT3/Funciones2.1.html">Funciones 2.1</a></li>
-            <li><a href="UT3/Funciones2.2.html">Funciones 2.2</a></li>
-            <li><a href="UT3/Funciones2.3.html">Funciones 2.3</a></li>
-            <li><a href="UT3/Funciones3.html">Funciones 3</a></li>
-            <li><a href="UT3/3.2/index.html">Minijuegos</a></li>
-        </ul>
+        <div class="dropdown">
+            <h2>UT3</h2>
+            <ul>
+                <li><a href="UT3/Funciones1.html">Funciones 1</a></li>
+                <li><a href="UT3/Funciones2.1.html">Funciones 2.1</a></li>
+                <li><a href="UT3/Funciones2.2.html">Funciones 2.2</a></li>
+                <li><a href="UT3/Funciones2.3.html">Funciones 2.3</a></li>
+                <li><a href="UT3/Funciones3.html">Funciones 3</a></li>
+                <li><a href="UT3/3.2/index.html">Minijuegos</a></li>
+            </ul>
+        </div>
 
-        <h2>UT4</h2>
-        <ul>
-            <li><a href="UT4/Ahorcado.html">Ahorcado</a></li>
-            <li><a href="UT4/Aparcamiento.html">Aparcamiento</a></li>
-            <li><a href="UT4/Vectores.html">Vectores</a></li>
-        </ul>
+        <div class="dropdown">
+            <h2>UT4</h2>
+            <ul>
+                <li><a href="UT4/Ahorcado.html">Ahorcado</a></li>
+                <li><a href="UT4/Aparcamiento.html">Aparcamiento</a></li>
+                <li><a href="UT4/Vectores.html">Vectores</a></li>
+            </ul>
+        </div>
 
-        <h2>UT5</h2>
-        <ul>
-            <li><a href="UT5/Prueba de un Formulario.html">Prueba de Formulario</a></li>
-            <li><a href="UT5/Validación de un Formulario.html">Validación de Formulario</a></li>
-        </ul>
+        <div class="dropdown">
+            <h2>UT5</h2>
+            <ul>
+                <li><a href="UT5/Prueba de un Formulario.html">Prueba de Formulario</a></li>
+                <li><a href="UT5/Validación de un Formulario.html">Validación de Formulario</a></li>
+            </ul>
+        </div>
 
-        <h2>UT6</h2>
-        <ul>
-            <li><a href="UT6/Boton casi inaccesible.html">Botón casi inaccesible</a></li>
-            <li><a href="UT6/Burbujeo de sucesos.html">Burbujeo de Sucesos</a></li>
-            <li><a href="UT6/Lista de varios niveles.html">Lista de varios niveles</a></li>
-        </ul>
+        <div class="dropdown">
+            <h2>UT6</h2>
+            <ul>
+                <li><a href="UT6/Boton casi inaccesible.html">Botón casi inaccesible</a></li>
+                <li><a href="UT6/Burbujeo de sucesos.html">Burbujeo de Sucesos</a></li>
+                <li><a href="UT6/Lista de varios niveles.html">Lista de varios niveles</a></li>
+            </ul>
+        </div>
+
+        <h2><a href="UT7/index.html">UT7</a></h2>
+        <h2><a href="UT8/index.html">UT8</a></h2>
+        <h2><a href="UT9/index.html">UT9</a></h2>
+        <h2><a href="UT10/index.html">UT10</a></h2>
     </section>
     <footer>
-        <p>Creado por Antonio - DEW © 2024</p>
+        <p>Creado por Antonio - DEW © 2024 - 2025</p>
     </footer>
 </body>
 </html>

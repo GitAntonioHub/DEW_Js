@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emulando Marcos con Div e Iframes</title>
+    <link rel="stylesheet" href="contenedores.css">
+    </head>
+<body>
+    <a href="index.html" class="boton-volver">Volver</a>
+
+    <div id="controls">
+        <label for="texto">Texto: </label>
+        <input type="text" id="texto" placeholder="Escribe algo aquí">
+        
+        <div>
+            <label>
+                <input type="radio" name="contenedor" value="izquierdo" checked> Izquierdo
+            </label>
+            <label>
+                <input type="radio" name="contenedor" value="derecho"> Derecho
+            </label>
+        </div>
+        
+        <button onclick="escribirTexto()">ESCRIBIR</button>
+        <button onclick="reiniciarTexto()">REINICIAR</button>
+    </div>
+
+    <div id="contenedores">
+        <div id="contenedor-izquierdo" class="contenedor">
+            <h3>Contenedor izquierdo</h3>
+            <p id="texto-izquierdo"></p>
+        </div>
+        <div id="contenedor-derecho" class="contenedor">
+            <h3>Contenedor derecho</h3>
+            <p id="texto-derecho"></p>
+            <button onclick="mostrarNombres()">¿Cómo se llaman los marcos?</button>
+        </div>
+    </div>
+
+    <script>
+        function escribirTexto() {
+            const texto = document.getElementById("texto").value;
+            const contenedorSeleccionado = document.querySelector('input[name="contenedor"]:checked').value;
+
+            if (contenedorSeleccionado === "izquierdo") {
+                document.getElementById("texto-izquierdo").innerText = texto;
+            } else {
+                document.getElementById("texto-derecho").innerText = texto;
+            }
+        }
+
+        function reiniciarTexto() {
+            document.getElementById("texto").value = "";
+            document.getElementById("texto-izquierdo").innerText = "";
+            document.getElementById("texto-derecho").innerText = "";
+        }
+
+        function mostrarNombres() {
+            alert("Nombres de los contenedores:\n1. Contenedor izquierdo\n2. Contenedor derecho\n3. Contenedor principal (padre)");
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Imágenes Completas</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <a href="index.html" class="boton-volver">Volver</a>
+    <h1>IMÁGENES COMPLETAS</h1>
+    <p>Página de imágenes completas</p>
+    <img id="imagen-alta" src="" alt="Cuadro en alta resolución">
+    <script>
+        function obtenerParametro(parametro) {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(parametro);
+        }
+
+        const rutaImagen = obtenerParametro('imagen');
+        if (rutaImagen) {
+            document.getElementById('imagen-alta').src = rutaImagen;
+        } else {
+            document.getElementById('imagen-alta').alt = "No se encontró la imagen.";
+        }
+    </script>
+</body>
+</html>

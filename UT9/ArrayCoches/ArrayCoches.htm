@@ -1,0 +1,164 @@
+<!DOCTYPE HTML>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Clases ES6 - Coches y Personas</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <a href="../index.html" class="boton-volver">Volver</a>
+
+  <script>
+    class Persona {
+      #nombre;
+      #apellidos;
+      #direccion;
+
+      static contadorPersonas = 0;
+
+      constructor(pNombre, pApellidos, pDireccion) {
+        this.#nombre    = pNombre;
+        this.#apellidos = pApellidos;
+        this.#direccion = pDireccion;
+        
+        Persona.contadorPersonas++;
+      }
+
+
+      get nombre() {
+        return this.#nombre;
+      }
+
+      set nombre(n) {
+        this.#nombre = n.trim();
+      }
+
+      get apellidos() {
+        return this.#apellidos;
+      }
+
+      set apellidos(a) {
+        this.#apellidos = a.trim();
+      }
+
+      get direccion() {
+        return this.#direccion;
+      }
+
+      set direccion(d) {
+        this.#direccion = d.trim();
+      }
+
+      get nombreCompleto() {
+        return `${this.#nombre} ${this.#apellidos} ${this.#nombre}`;
+      }
+
+      toString() {
+        return `${this.#apellidos} ${this.#direccion}`;
+      }
+
+      static totalPersonasCreadas() {
+        return `Se han creado ${Persona.contadorPersonas} personas.`;
+      }
+    }
+
+
+    class Coche {
+      matricula;
+      marca;
+      modelo;
+      propietario; 
+
+      static contadorCoches = 0;
+
+      constructor(pMatricula, pMarca, pModelo, pPropietario) {
+        this.matricula  = pMatricula;
+        this.marca      = pMarca;
+        this.modelo     = pModelo;
+        this.propietario= pPropietario;
+
+        Coche.contadorCoches++;
+      }
+
+
+      get Matricula() {
+        return this.matricula;
+      }
+
+      set Matricula(m) {
+        this.matricula = m.trim();
+      }
+
+     
+      toString() {
+      
+		return `${this.matricula} ${this.marca} ${this.modelo}<br>
+                <b>Propietario:</b> ${this.propietario}`;
+      }
+
+      static totalCochesCreados() {
+        return `Se han creado ${Coche.contadorCoches} coches.`;
+      }
+    }
+
+
+    const Jorge   = new Persona("Jorge","Washington Usa","Casa Blanca s/n");
+    const Barbara = new Persona("Bárbara","Streissand Cine","c/ Hollywood 345, 6º B");
+
+    const coches = [
+      new Coche("GC1234SG","Audi","TT",      Jorge),
+      new Coche("1234SDF", "Volkswagen","Golf GTI", Barbara)
+    ];
+
+
+    document.write("<h2>Listado de coches (toString)</h2>");
+    document.write("<table>");
+    for (let i = 0; i < coches.length; i++) {
+      document.write(`<tr><td>${coches[i]}</td></tr>`);
+    }
+    document.write("</table>");
+
+    document.write("<h2>Otro listado de coches (acceso a sus propiedades)</h2>");
+    document.write("<table>");
+    for (let i = 0; i < coches.length; i++) {
+      document.write("<tr>");
+      document.write(`<td>${coches[i].Matricula}</td>`);
+      document.write(`<td>${coches[i].marca}</td>`);
+      document.write(`<td>${coches[i].modelo}</td>`);
+      document.write(`<td>${coches[i].propietario}</td>`);
+      document.write("</tr>");
+    }
+    document.write("</table>");
+
+    document.write("<h2>Otro listado más (nombre completo del propietario via getter)</h2>");
+    document.write("<table>");
+    for (let i = 0; i < coches.length; i++) {
+      document.write("<tr>");
+      document.write(`<td>${coches[i].Matricula}</td>`);
+      document.write(`<td>${coches[i].marca}</td>`);
+      document.write(`<td>${coches[i].modelo}</td>`);
+      document.write(`<td>${coches[i].propietario.nombreCompleto}</td>`);
+      document.write("</tr>");
+    }
+    document.write("</table>");
+
+    document.write("<h2>Otro listado más completo</h2>");
+    document.write("<table>");
+    for (let i = 0; i < coches.length; i++) {
+      document.write("<tr>");
+      document.write(`<td>${coches[i].Matricula}</td>`);
+      document.write(`<td>${coches[i].marca}</td>`);
+      document.write(`<td>${coches[i].modelo}</td>`);
+      document.write(`<td>${coches[i].propietario.nombre}</td>`);
+      document.write(`<td>${coches[i].propietario.apellidos}</td>`);
+      document.write(`<td>${coches[i].propietario.direccion}</td>`);
+      document.write("</tr>");
+    }
+    document.write("</table>");
+    document.write("<h2>Métodos estáticos</h2>");
+    document.write(`<p>${Persona.totalPersonasCreadas()}</p>`);
+    document.write(`<p>${Coche.totalCochesCreados()}</p>`);
+    
+  </script>
+</body>
+</html>

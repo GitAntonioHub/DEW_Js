@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Roll Over</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <a href="index.html" class="boton-volver">Volver</a>
+    <h1>Demostración del efecto sustitución en imágenes</h1>
+    <div class="container">
+        <div class="image-box">
+            <img id="prim-dir" src="img/prim-dir.gif" alt="Imagen primaria directa" 
+                 onmouseover="showSecondary()">
+        </div>
+
+        <div class="image-box">
+            <img id="secun-dir" src="img/secun-dir.gif" alt="Imagen secundaria directa"
+                 onclick="closeWindow()" onmouseout="showPrimary()">
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="image-box">
+            <img id="prim-indir" src="img/prim-indir.gif" alt="Imagen primaria indirecta" 
+                 onmouseover="showSecondary()">
+        </div>
+
+        <div class="image-box">
+            <img id="secun-indir" src="img/secun-indir.gif" alt="Imagen secundaria indirecta" 
+                 onmouseout="showPrimary()">
+        </div>
+    </div>
+
+    <script>
+        function showSecondary() {
+            document.getElementById("prim-dir").style.display = "none";
+            document.getElementById("prim-indir").style.display = "none";
+
+            document.getElementById("secun-dir").style.display = "block";
+            document.getElementById("secun-indir").style.display = "block";
+        }
+
+        function showPrimary() {
+            document.getElementById("secun-dir").style.display = "none";
+            document.getElementById("secun-indir").style.display = "none";
+
+            document.getElementById("prim-dir").style.display = "block";
+            document.getElementById("prim-indir").style.display = "block";
+        }
+
+        function closeWindow() {
+            if (confirm("¿Seguro que quieres cerrar la ventana?")) {
+                window.close();
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Miniaturas</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <a href="index.html" class="boton-volver">Volver</a>
+    <h1>MINIATURAS</h1>
+    <p>Página de miniaturas de pintores grancanarios</p>
+    <div class="galeria">
+        <img src="arte/Damaso1.gif" alt="Dámaso 1" onclick="mostrarImagen('arte/Damaso1.jpg')">
+        <img src="arte/Felo1.gif" alt="Felo 1" onclick="mostrarImagen('arte/Felo1.jpg')">
+        <img src="arte/Felo2.gif" alt="Felo 2" onclick="mostrarImagen('arte/Felo2.jpg')">
+        <img src="arte/lujan1.gif" alt="Luján 1" onclick="mostrarImagen('arte/lujan1.jpg')">
+        <img src="arte/Nestor1.gif" alt="Néstor 1" onclick="mostrarImagen('arte/Nestor1.jpg')">
+        <img src="arte/Nestor2.gif" alt="Néstor 2" onclick="mostrarImagen('arte/Nestor2.jpg')">
+        <img src="arte/Nestor3.gif" alt="Néstor 3" onclick="mostrarImagen('arte/Nestor3.jpg')">
+        <img src="arte/Nestor4.gif" alt="Néstor 4" onclick="mostrarImagen('arte/Nestor4.jpg')">
+        <img src="arte/Padron1.gif" alt="Padrón 1" onclick="mostrarImagen('arte/Padron1.jpg')">
+        <img src="arte/Padron2.gif" alt="Padrón 2" onclick="mostrarImagen('arte/Padron2.jpg')">
+    </div>
+    <script>
+        function mostrarImagen(rutaAltaResolucion) {
+            window.location.href = `imagenCompleta.html?imagen=${rutaAltaResolucion}`;
+        }
+    </script>
+</body>
+</html>

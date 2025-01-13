@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pantalla de movimientos y filtros</title>
+    <link rel="stylesheet" href="corredor.css">
+    
+</head>
+<body>
+    <a href="index.html" class="boton-volver">Volver</a>
+    <h1>Pantalla de movimientos y filtros</h1>
+    <div class="container">
+        <img src="img/silueta2.gif" alt="Corredor" class="imagen" id="imagen">
+    </div>
+    <button onclick="moverImagen()">Mover imagen</button>
+    <button onclick="situarImagen()">Situar imagen</button>
+
+    <script>
+        const imagen = document.getElementById('imagen');
+        let invertido = false;
+
+        function moverImagen() {
+            if (!invertido) {
+                imagen.style.left = 'calc(100% - 50px)';
+                imagen.addEventListener('transitionend', () => {
+                    imagen.classList.add('invertida');
+                    imagen.style.left = '0';
+                    invertido = true;
+                }, { once: true });
+            } else {
+                imagen.classList.remove('invertida');
+                imagen.style.left = 'calc(100% - 50px)';
+                imagen.addEventListener('transitionend', () => {
+                    imagen.style.left = '0';
+                    invertido = false;
+                }, { once: true });
+            }
+        }
+
+        function situarImagen() {
+            imagen.style.left = '0';
+            imagen.classList.remove('invertida');
+            invertido = false;
+        }
+    </script>
+</body>
+</html>

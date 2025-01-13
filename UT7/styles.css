@@ -1,0 +1,138 @@
+/* General */
+
+.boton-volver {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background-color: #4CAF50;
+    color: white;
+    padding: 8px 12px;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: bold;
+}/* General */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f9;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+/* Header */
+header {
+    background-color: #800000;
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+    width: 100%;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Main content */
+main {
+    padding: 20px;
+    text-align: center;
+    width: 80%;
+    max-width: 900px;
+}
+
+/* Índice */
+.indice {
+    list-style-type: none;
+    padding: 0;
+    margin: 20px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.indice li {
+    margin: 0;
+}
+
+.indice a {
+    text-decoration: none;
+    color: #800000;
+    font-size: 20px;
+    font-weight: bold;
+    border: 2px solid #800000;
+    padding: 10px 20px;
+    border-radius: 5px;
+    display: inline-block;
+    transition: all 0.3s ease-in-out;
+}
+
+.indice a:hover {
+    color: white;
+    background-color: #800000;
+}
+
+/* Galerías y contenedores */
+.galeria {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    padding: 20px;
+}
+
+.galeria img, .contenedor img {
+    border: 2px solid #333;
+    max-width: 150px;
+    height: auto;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.galeria img:hover, .contenedor img:hover {
+    transform: scale(1.1);
+    border-color: #800000;
+}
+
+.contenedor {
+    display: inline-block;
+    margin: 10px;
+    padding: 10px;
+    border: 2px solid #800000;
+    width: 45%;
+    text-align: center;
+    vertical-align: top;
+}
+
+/* Botones */
+button {
+    background-color: #800000;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    margin: 5px;
+    border-radius: 5px;
+    transition: background-color 0.2s;
+}
+
+button:hover {
+    background-color: #b22222;
+}
+
+input[type="text"], input[type="radio"] {
+    margin: 5px;
+}
+
+/* Footer */
+footer {
+    background-color: #800000;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    width: 100%;
+    position: relative;
+    margin-top: auto;
+}

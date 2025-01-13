@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Selector de Colores RGB</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <a href="index.html" class="boton-volver">Volver</a>
+    <div class="container">
+        <h3>Elija una propiedad:</h3>
+        <select id="propiedad">
+            <option value="bgColor">Fondo (bgColor)</option>
+            <option value="fgColor">Texto (fgColor)</option>
+            <option value="linkColor">Enlace (linkColor)</option>
+            <option value="aLinkColor">Enlace activo (aLinkColor)</option>
+            <option value="vLinkColor">Enlace visitado (vLinkColor)</option>
+        </select>
+        <h3>Elija el color:</h3>
+        <label for="rojo">Rojo:</label>
+        <input type="text" id="rojo" value="255"><br>
+        <label for="verde">Verde:</label>
+        <input type="text" id="verde" value="255"><br>
+        <label for="azul">Azul:</label>
+        <input type="text" id="azul" value="255"><br><br>
+        <button onclick="cambiarColor()">Cambiar el color</button>
+        <button onclick="window.close()">Cerrar</button>
+    </div>
+
+    <script>
+        function cambiarColor() {
+            const propiedad = document.getElementById("propiedad").value;
+            const rojo = parseInt(document.getElementById("rojo").value);
+            const verde = parseInt(document.getElementById("verde").value);
+            const azul = parseInt(document.getElementById("azul").value);
+
+            if (
+                isNaN(rojo) || rojo < 0 || rojo > 255 ||
+                isNaN(verde) || verde < 0 || verde > 255 ||
+                isNaN(azul) || azul < 0 || azul > 255
+            ) {
+                alert("Por favor, introduzca valores válidos entre 0 y 255.");
+                return;
+            }
+
+            const colorHex = `#${rojo.toString(16).padStart(2, "0")}${verde
+                .toString(16)
+                .padStart(2, "0")}${azul.toString(16).padStart(2, "0")}`;
+
+            if (window.opener && !window.opener.closed) {
+                window.opener.actualizarColor(propiedad, colorHex);
+            } else {
+                alert("No se puede acceder a la ventana principal.");
+            }
+        }
+    </script>
+</body>
+</html>

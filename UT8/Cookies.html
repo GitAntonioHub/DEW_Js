@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contador de Visitas</title>
+    <script src="Cookies.js"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <a href="index.html" class="boton-volver">Volver</a>
+    <div class="header">COOKIES</div>
+    <div class="content" id="message">
+    </div>
+    <button onclick="borrarCookie()">Borrar cookie</button>
+
+    <script>
+        const cookieName = "Contador_Visitas2";
+
+        const visitas = leerCookie(cookieName);
+        if (visitas) {
+            const contador = parseInt(visitas, 10) + 1;
+            document.getElementById("message").innerText = `Esta es su visita nº ${contador}.`;
+            grabarCookie(cookieName, contador, 365);
+        } else {
+            document.getElementById("message").innerText = "Bienvenido a la página de las cookies.";
+            grabarCookie(cookieName, 1, 365);
+        }
+
+        function borrarCookie() {
+            eliminarCookie(cookieName);
+            alert("Cookie borrada. Recargue la página para comenzar de nuevo.");
+        }
+    </script>
+</body>
+</html>

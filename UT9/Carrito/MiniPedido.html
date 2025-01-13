@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Mini Pedido</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script>
+
+    class Articulo {
+      constructor(codigo, descripcion, precio, cantidad, imagen) {
+        this.codigo = codigo;
+        this.descripcion = descripcion;
+        this.precio = precio;
+        this.cantidad = cantidad;
+        this.imagen = imagen;
+      }
+
+      getSubtotal() {
+        return this.precio * this.cantidad;
+      }
+    }
+
+    const articulos = [
+      new Articulo("A0001", "Ordenador PIV", 650.1, 0, "ORDENADOR1.GIF"),
+      new Articulo("A0002", "Ordenador PIV mod. 2", 683.15, 0, "ORDENADOR2.GIF"),
+      new Articulo("B0001", "Impresora HP", 150.88, 0, "IMPRESORA.GIF"),
+      new Articulo("B0002", "Altavoces", 29.99, 0, "ALTAVOCES.GIF"),
+      new Articulo("B0003", "Bola 1", 5.99, 0, "BOLA1.GIF"),
+      new Articulo("B0004", "CD-ROM", 12.50, 0, "CDROM.GIF"),
+      new Articulo("B0005", "Disquetera", 6.75, 0, "DISQUETERA.GIF"),
+      new Articulo("B0006", "DVD", 14.99, 0, "DVD.GIF"),
+      new Articulo("B0007", "Fuente de alimentación", 45.00, 0, "FUENTE.GIF"),
+      new Articulo("B0008", "Disco Duro HD", 60.00, 0, "HD.GIF"),
+      new Articulo("B0009", "Memoria", 39.99, 0, "MEMORIA.GIF"),
+      new Articulo("B0010", "Micro Intel", 210.50, 0, "MICRO.GIF"),
+      new Articulo("B0011", "Micro AMD", 199.99, 0, "MICROAMD.GIF"),
+      new Articulo("B0012", "Módem externo", 49.99, 0, "MODEM.GIF"),
+      new Articulo("B0013", "Módem interno", 39.99, 0, "MODEMINTERNO.GIF"),
+      new Articulo("B0014", "Placa madre", 120.00, 0, "PLACAMADRE.GIF"),
+      new Articulo("B0015", "Ratón", 10.00, 0, "RATON.GIF"),
+      new Articulo("B0016", "Escáner", 64.99, 0, "SCANNER.GIF"),
+      new Articulo("B0017", "Teclado", 15.00, 0, "TECLADO.GIF"),
+      new Articulo("B0018", "Tarjeta Gráfica AGP", 85.00, 0, "TGRAFICAAGP.GIF"),
+      new Articulo("B0019", "Tarjeta Gráfica PCI", 75.00, 0, "TGRAFICAPCI.GIF"),
+      new Articulo("B0020", "Tarjeta de Red", 12.00, 0, "TRED.GIF"),
+      new Articulo("B0021", "Tarjeta SCSI", 20.00, 0, "TSCSI.GIF"),
+      new Articulo("B0022", "Tarjeta de Sonido", 28.00, 0, "TSONDIDO.GIF"),
+      new Articulo("B0023", "Webcam", 19.99, 0, "WEBCAM.GIF")
+    ];
+
+    window.onload = () => {
+      leerCookieCantidades();
+      mostrarFactura();
+    };
+
+    function leerCookieCantidades() {
+      const match = document.cookie.match(/(^|;\s*)cantidades=([^;]+)/);
+      if (match) {
+        const valores = match[2].split("+");
+        valores.forEach((val, i) => {
+          articulos[i].cantidad = parseInt(val, 10);
+        });
+      }
+    }
+
+    function mostrarFactura() {
+      const facturaDiv = document.getElementById("factura");
+      facturaDiv.innerHTML = "";
+
+      let total = 0;
+
+      articulos.forEach(art => {
+        if (art.cantidad > 0) {
+          const subtotal = art.getSubtotal();
+          total += subtotal;
+
+          const linea = document.createElement("div");
+          linea.textContent = 
+            `${art.cantidad} ud. ${art.descripcion} a ` +
+            `${art.precio.toFixed(2)} € = ` +
+            `${subtotal.toFixed(2)} €`;
+          facturaDiv.appendChild(linea);
+        }
+      });
+
+      const totalDiv = document.createElement("div");
+      totalDiv.style.marginTop = "10px";
+      totalDiv.textContent = `Total = ${total.toFixed(2)} €`;
+      facturaDiv.appendChild(totalDiv);
+    }
+  </script>
+</head>
+<body>
+  <a href="index.html" class="boton-volver">Volver</a>
+
+  <div class="container">
+    <h1>Pedido</h1>
+    <h4>¿Te vas a montar un PC pepino o qué?</h4>
+    <div id="factura"></div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Colecciones</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <a href="index.html" class="boton-volver">Volver</a>
+    <h1 id="marquesina">¡Queremos que compre!</h1>
+    <div class="productos">
+        <p data-texto="Este producto es el mejor de la línea">Producto A</p>
+        <p data-texto="Este producto es de la mejor calidad">Producto B</p>
+        <p data-texto="Este producto es barato, barato, barato">Producto C</p>
+    </div>
+
+    <script>
+        const defaultText = "¡Queremos que compre!";
+        const marquesina = document.getElementById("marquesina");
+        const productos = document.querySelectorAll(".productos p");
+
+        productos.forEach(producto => {
+            producto.addEventListener("mouseover", () => {
+                marquesina.textContent = producto.getAttribute("data-texto");
+            });
+
+            producto.addEventListener("mouseout", () => {
+                marquesina.textContent = defaultText;
+            });
+        });
+    </script>
+</body>
+</html>

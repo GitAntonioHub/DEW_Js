@@ -1,0 +1,146 @@
+.boton-volver {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background-color: #4CAF50;
+  color: white;
+  padding: 8px 12px;
+  border-radius: 4px;
+  text-decoration: none;
+  font-weight: bold;
+}
+:root {
+    --color-primario: #4c84ff;       
+    --color-secundario: #f2f4f6;     
+    --color-acento: #ff706c;         
+    --color-texto: #333;
+    --color-fondo: #fff;
+    --fuente-base: 'Poppins', sans-serif;
+  }
+  
+
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  
+  body {
+    font-family: var(--fuente-base);
+    background-color: var(--color-secundario);
+    color: var(--color-texto);
+    line-height: 1.5;
+    padding: 20px;
+  }
+  h4 {
+    font-weight: 1000;
+    margin-bottom: 0.5em;
+    color:red;
+  }
+
+  h1, h2, h3 {
+    font-weight: 600;
+    margin-bottom: 0.5em;
+    color: var(--color-primario);
+  }
+  
+  h1 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+  
+  h2 {
+    margin-top: 1.5rem;
+    font-size: 1.5rem;
+  }
+  
+  .container {
+    max-width: 900px;
+    margin: 0 auto;
+    background-color: var(--color-fondo);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  }
+ 
+  #lista-articulos {
+    margin-bottom: 20px;
+  }
+  
+  .articulo {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: var(--color-secundario);
+    border-radius: 8px;
+    padding: 10px;
+    margin-bottom: 10px;
+    transition: background-color 0.2s ease-in-out;
+  }
+  
+  .articulo:hover {
+    background-color: #e9edf0; 
+  }
+
+  .articulo span {
+    display: inline-block;
+    width: 300px;       
+    overflow-wrap: break-word; 
+  }
+  
+  .articulo input[type="number"] {
+    width: 60px;
+    padding: 5px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    text-align: center;
+  }
+  
+  .articulo img {
+    margin-left: 10px;
+    height: 50px;
+    object-fit: contain;
+  }
+  
+  button,
+  input[type="button"],
+  input[type="submit"] {
+    background-color: var(--color-primario);
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+  }
+  
+  button:hover,
+  input[type="button"]:hover,
+  input[type="submit"]:hover {
+    background-color: var(--color-acento);
+  }
+  
+  #factura > div {
+    margin-bottom: 5px;
+  }
+  
+  #factura {
+    font-size: 1rem;
+  }
+  
+  #factura div:last-child {
+    font-weight: bold;
+    margin-top: 10px;
+    font-size: 1.1rem;
+  }
+  
+  @media (max-width: 600px) {
+    .articulo {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    .articulo img {
+      margin-top: 10px;
+    }
+  }
