@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Animación con Canvas</title>
+  <link rel="stylesheet" href="corredorCanvas.css">
+
+</head>
+<body>
+
+    <a href="index.html" class="boton-volver">Volver</a>
+
+  <div class="container">
+    <canvas id="miCanvas" width="600" height="200"></canvas>
+  </div>
+
+  <button id="btnIzquierda">Mover Izquierda</button>
+  <button id="btnDerecha">Mover Derecha</button>
+
+  <script>
+    const canvas = document.getElementById("miCanvas");
+    const ctx = canvas.getContext("2d");
+
+    let x = 0;          
+    let vx = 0;         
+    let imagenInvertida = false; 
+
+    const imagen = new Image();
+    imagen.src = 'img/silueta2.gif';
+
+    imagen.onload = function() {
+      requestAnimationFrame(dibujar);
+    };
+
+    function dibujar() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      ctx.save();
+
+      if (imagenInvertida) {
+        ctx.scale(-1, 1);
+        ctx.drawImage(
+          imagen,
+          -x - imagen.width,
+          (canvas.height - imagen.height) / 2
+        );
+      } else {
+        ctx.drawImage(
+          imagen,
+          x,
+          (canvas.height - imagen.height) / 2
+        );
+      }
+
+      ctx.restore();
+
+      x += vx;
+
+      if (x < 0) {
+        x = 0;
+      }
+      if (x > canvas.width - imagen.width) {
+        x = canvas.width - imagen.width;
+      }
+
+      requestAnimationFrame(dibujar);
+    }
+
+    document.getElementById("btnIzquierda").addEventListener("click", () => {
+      vx = -2;                
+      imagenInvertida = true; 
+    });
+
+    document.getElementById("btnDerecha").addEventListener("click", () => {
+      vx = 2;                 
+      imagenInvertida = false; 
+    });
+  </script>
+</body>
+</html>
