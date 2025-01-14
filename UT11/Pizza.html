@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Pizzería DOM</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a href="../index.html" class="boton-volver">Volver</a>
+<div class="container">
+  <h1>Elige tu pizza</h1>
+  <div class="pizza-container">
+    <div class="opciones">
+      <fieldset>
+        <legend>Toppings</legend>
+        <label><input type="checkbox" value="Salchicha" />Salchicha</label>
+        <label><input type="checkbox" value="Pepperoni" />Pepperoni</label>
+        <label><input type="checkbox" value="Jamón" />Jamón</label>
+        <label><input type="checkbox" value="Pimiento" />Pimiento</label>
+        <label><input type="checkbox" value="Champiñones" />Champiñones</label>
+        <label><input type="checkbox" value="Cebolla" />Cebolla</label>
+        <label><input type="checkbox" value="Jalapeños" />Jalapeños</label>
+      </fieldset>
+
+      <fieldset>
+        <legend>Tipo de masa</legend>
+        <label><input type="radio" name="masa" value="normal" checked />normal</label>
+        <label><input type="radio" name="masa" value="gruesa" />gruesa</label>
+        <label><input type="radio" name="masa" value="fina" />fina</label>
+      </fieldset>
+
+      <button id="btn-prep">Prep Pizza</button>
+    </div>
+
+    <div class="resultado">
+      <h2>Esta pizza tendrá:</h2>
+      <ul id="lista-toppings"></ul>
+    </div>
+  </div>
+</div>
+  <script>
+    const btnPrep = document.getElementById('btn-prep');
+    const listaToppings = document.getElementById('lista-toppings');
+
+    btnPrep.addEventListener('click', () => {
+      listaToppings.innerHTML = '';
+
+      const checkboxes = document.querySelectorAll('input[type="checkbox"]:checked');
+      const toppingsElegidos = Array.from(checkboxes).map(checkbox => checkbox.value);
+
+      const masaElegida = document.querySelector('input[name="masa"]:checked').value;
+
+      toppingsElegidos.forEach(topping => {
+        const li = document.createElement('li');
+        li.textContent = topping;
+        listaToppings.appendChild(li);
+      });
+
+      const liMasa = document.createElement('li');
+      liMasa.textContent = 'Masa ' + masaElegida ;
+      listaToppings.appendChild(liMasa);
+    });
+  </script>
+</body>
+</html>

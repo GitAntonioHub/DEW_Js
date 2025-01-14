@@ -1,0 +1,86 @@
+.boton-volver {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background-color: #4CAF50;
+  color: white;
+  padding: 8px 12px;
+  border-radius: 4px;
+  text-decoration: none;
+  font-weight: bold;
+}
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+  }
+
+  h1 {
+    color: #d10000;
+    text-transform: uppercase;
+    text-shadow: 1px 1px 1px #aaa;
+    margin-bottom: 10px;
+  }
+
+  .pizza-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+
+  .opciones, .resultado {
+    flex: 1 1 300px;
+    border: 2px solid #f0f0f0;
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  }
+
+  fieldset {
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    padding: 10px;
+  }
+
+  legend {
+    font-weight: bold;
+  }
+
+  label {
+    display: block;
+    margin: 4px 0;
+    cursor: pointer;
+  }
+
+  .resultado {
+    background: url('img/pizza.jpg') no-repeat bottom right;
+    background-size: 120px; 
+    min-height: 200px;     
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  button {
+    display: inline-block;
+    margin-top: 8px;
+    padding: 8px 16px;
+    background-color: #6fbd43;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    text-transform: uppercase;
+    font-weight: bold;
+  }
+
+  button:hover {
+    background-color: #5da037;
+  }
